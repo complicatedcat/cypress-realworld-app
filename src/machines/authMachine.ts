@@ -4,7 +4,6 @@ import { omit } from "lodash/fp";
 import { httpClient } from "../utils/asyncUtils";
 import { history } from "../utils/historyUtils";
 import { User } from "../models";
-import { backendPort } from "../utils/portUtils";
 
 dotenv.config();
 export interface AuthMachineSchema {

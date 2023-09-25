@@ -1,7 +1,6 @@
 import { omit, flow, first, isEmpty } from "lodash/fp";
 import { dataMachine } from "./dataMachine";
 import { httpClient } from "../utils/asyncUtils";
-import { backendPort } from "../utils/portUtils";
 
 export const transactionDetailMachine = dataMachine("transactionData").withConfig({
   services: {

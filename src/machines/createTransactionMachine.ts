@@ -4,7 +4,6 @@ import { dataMachine } from "./dataMachine";
 import { httpClient } from "../utils/asyncUtils";
 import { User, TransactionCreatePayload } from "../models";
 import { authService } from "./authMachine";
-import { backendPort } from "../utils/portUtils";
 
 export interface CreateTransactionMachineSchema {
   states: {
