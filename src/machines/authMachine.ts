@@ -151,7 +151,10 @@ export const authMachine = Machine<AuthMachineContext, AuthMachineSchema, AuthMa
     services: {
       performSignup: async (ctx, event) => {
         const payload = omit("type", event);
-        const resp = await httpClient.post(`https://develop--gorgeous-strudel-9ed118.netlify.app/users`, payload);
+        const resp = await httpClient.post(
+          `https://develop--gorgeous-strudel-9ed118.netlify.app/users`,
+          payload
+        );
         history.push("/signin");
         return resp.data;
       },
@@ -182,7 +185,9 @@ export const authMachine = Machine<AuthMachineContext, AuthMachineSchema, AuthMa
         return Promise.resolve({ user });
       },
       getUserProfile: async (ctx, event) => {
-        const resp = await httpClient.get(`https://develop--gorgeous-strudel-9ed118.netlify.app/checkAuth`);
+        const resp = await httpClient.get(
+          `https://develop--gorgeous-strudel-9ed118.netlify.app/checkAuth`
+        );
         return resp.data;
       },
       getGoogleUserProfile: /* istanbul ignore next */ (ctx, event: any) => {

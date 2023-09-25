@@ -48,29 +48,38 @@ const createBankAccountMutation = gql`
 export const bankAccountsMachine = dataMachine("bankAccounts").withConfig({
   services: {
     fetchData: async (ctx, event: any) => {
-      const resp = await httpClient.post(`https://develop--gorgeous-strudel-9ed118.netlify.app/graphql`, {
-        operationName: "ListBankAccount",
-        query: listBankAccountQuery.loc?.source.body,
-      });
+      const resp = await httpClient.post(
+        `https://develop--gorgeous-strudel-9ed118.netlify.app/graphql`,
+        {
+          operationName: "ListBankAccount",
+          query: listBankAccountQuery.loc?.source.body,
+        }
+      );
       // @ts-ignore
       return { results: resp.data.data.listBankAccount, pageData: {} };
     },
     deleteData: async (ctx, event: any) => {
       const payload = omit("type", event);
-      const resp = await httpClient.post(`https://develop--gorgeous-strudel-9ed118.netlify.app/graphql`, {
-        operationName: "DeleteBankAccount",
-        query: deleteBankAccountMutation.loc?.source.body,
-        variables: payload,
-      });
+      const resp = await httpClient.post(
+        `https://develop--gorgeous-strudel-9ed118.netlify.app/graphql`,
+        {
+          operationName: "DeleteBankAccount",
+          query: deleteBankAccountMutation.loc?.source.body,
+          variables: payload,
+        }
+      );
       return resp.data;
     },
     createData: async (ctx, event: any) => {
       const payload = omit("type", event);
-      const resp = await httpClient.post(`https://develop--gorgeous-strudel-9ed118.netlify.app/graphql`, {
-        operationName: "CreateBankAccount",
-        query: createBankAccountMutation.loc?.source.body,
-        variables: payload,
-      });
+      const resp = await httpClient.post(
+        `https://develop--gorgeous-strudel-9ed118.netlify.app/graphql`,
+        {
+          operationName: "CreateBankAccount",
+          query: createBankAccountMutation.loc?.source.body,
+          variables: payload,
+        }
+      );
       return resp.data;
     },
   },
