@@ -23,12 +23,12 @@ import bankTransferRoutes from "./banktransfer-routes";
 import testDataRoutes from "./testdata-routes";
 import { checkAuth0Jwt, verifyOktaToken, checkCognitoJwt, checkGoogleJwt } from "./helpers";
 import resolvers from "./graphql/resolvers";
-import { getBackendPort } from "../src/utils/portUtils";
+import { frontendPort, getBackendPort } from "../src/utils/portUtils";
 
 require("dotenv").config();
 
 const corsOption = {
-  origin: `https://gorgeous-strudel-9ed118.netlify.app/`,
+  origin: `http://localhost:${frontendPort}`,
   credentials: true,
 };
 

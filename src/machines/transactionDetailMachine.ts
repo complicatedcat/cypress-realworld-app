@@ -1,6 +1,7 @@
 import { omit, flow, first, isEmpty } from "lodash/fp";
 import { dataMachine } from "./dataMachine";
 import { httpClient } from "../utils/asyncUtils";
+import { backendPort } from "../utils/portUtils";
 
 export const transactionDetailMachine = dataMachine("transactionData").withConfig({
   services: {
@@ -9,7 +10,7 @@ export const transactionDetailMachine = dataMachine("transactionData").withConfi
       const contextTransactionId = !isEmpty(ctx.results) && first(ctx.results)["id"];
       const transactionId = contextTransactionId || payload.transactionId;
       const resp = await httpClient.get(
-        `https://gorgeous-strudel-9ed118.netlify.app/transactions/${transactionId}`
+        `http://localhost:${backendPort}/transactions/${transactionId}`
       );
       // @ts-ignore
       return { results: [resp.data.transaction] };
@@ -18,7 +19,7 @@ export const transactionDetailMachine = dataMachine("transactionData").withConfi
       let route = event.entity === "LIKE" ? "likes" : "comments";
       const payload = flow(omit("type"), omit("entity"))(event);
       const resp = await httpClient.post(
-        `https://gorgeous-strudel-9ed118.netlify.app/${route}/${payload.transactionId}`,
+        `http://localhost:${backendPort}/${route}/${payload.transactionId}`,
         payload
       );
       return resp.data;
@@ -28,7 +29,7 @@ export const transactionDetailMachine = dataMachine("transactionData").withConfi
       const contextTransactionId = !isEmpty(ctx.results) && first(ctx.results)["id"];
       const transactionId = contextTransactionId || payload.id;
       const resp = await httpClient.patch(
-        `https://gorgeous-strudel-9ed118.netlify.app/transactions/${transactionId}`,
+        `http://localhost:${backendPort}/transactions/${transactionId}`,
         payload
       );
       return resp.data;
