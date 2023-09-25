@@ -7,7 +7,7 @@ export const notificationsMachine = dataMachine("notifications").withConfig({
     fetchData: async (ctx, event: any) => {
       const payload = omit("type", event);
       const resp = await httpClient.get(
-        `https://develop--gorgeous-strudel-9ed118.netlify.app/notifications`,
+        `https://gorgeous-strudel-9ed118.netlify.app/notifications`,
         {
           params: !isEmpty(payload) && event.type === "FETCH" ? payload : undefined,
         }
@@ -17,7 +17,7 @@ export const notificationsMachine = dataMachine("notifications").withConfig({
     updateData: async (ctx, event: any) => {
       const payload = omit("type", event);
       const resp = await httpClient.patch(
-        `https://develop--gorgeous-strudel-9ed118.netlify.app/notifications/${payload.id}`,
+        `https://gorgeous-strudel-9ed118.netlify.app/notifications/${payload.id}`,
         payload
       );
       return resp.data;

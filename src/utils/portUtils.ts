@@ -10,9 +10,7 @@ export const getBackendPort = async () => {
     .then((_port) => {
       if (Number(backendPort) === _port) {
         console.log(
-          chalk.green(
-            `Backend server running at https://develop--gorgeous-strudel-9ed118.netlify.app`
-          )
+          chalk.green(`Backend server running at https://gorgeous-strudel-9ed118.netlify.app`)
         );
         return Number(backendPort);
       }
