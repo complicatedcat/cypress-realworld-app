@@ -9,14 +9,9 @@ import { authService } from "../machines/authMachine";
 import AlertBar from "../components/AlertBar";
 import { bankAccountsMachine } from "../machines/bankAccountsMachine";
 import PrivateRoutesContainer from "./PrivateRoutesContainer";
-import { Amplify, Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 import { AmplifyAuthenticator, AmplifySignUp, AmplifySignIn } from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
-
-// @ts-ignore
-import awsConfig from "../aws-exports";
-
-Amplify.configure(awsConfig);
 
 // @ts-ignore
 if (window.Cypress) {
