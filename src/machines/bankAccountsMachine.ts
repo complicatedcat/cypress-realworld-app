@@ -47,7 +47,7 @@ const createBankAccountMutation = gql`
 export const bankAccountsMachine = dataMachine("bankAccounts").withConfig({
   services: {
     fetchData: async (ctx, event: any) => {
-      const resp = await httpClient.post(`https://gorgeous-strudel-9ed118.netlify.app//graphql`, {
+      const resp = await httpClient.post(`https://gorgeous-strudel-9ed118.netlify.app/graphql`, {
         operationName: "ListBankAccount",
         query: listBankAccountQuery.loc?.source.body,
       });
@@ -56,7 +56,7 @@ export const bankAccountsMachine = dataMachine("bankAccounts").withConfig({
     },
     deleteData: async (ctx, event: any) => {
       const payload = omit("type", event);
-      const resp = await httpClient.post(`https://gorgeous-strudel-9ed118.netlify.app//graphql`, {
+      const resp = await httpClient.post(`https://gorgeous-strudel-9ed118.netlify.app/graphql`, {
         operationName: "DeleteBankAccount",
         query: deleteBankAccountMutation.loc?.source.body,
         variables: payload,
@@ -65,7 +65,7 @@ export const bankAccountsMachine = dataMachine("bankAccounts").withConfig({
     },
     createData: async (ctx, event: any) => {
       const payload = omit("type", event);
-      const resp = await httpClient.post(`https://gorgeous-strudel-9ed118.netlify.app//graphql`, {
+      const resp = await httpClient.post(`https://gorgeous-strudel-9ed118.netlify.app/graphql`, {
         operationName: "CreateBankAccount",
         query: createBankAccountMutation.loc?.source.body,
         variables: payload,

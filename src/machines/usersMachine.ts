@@ -7,7 +7,7 @@ export const usersMachine = dataMachine("users").withConfig({
     fetchData: async (ctx, event: any) => {
       const payload = omit("type", event);
       let route = isEmpty(payload) ? "users" : "users/search";
-      const resp = await httpClient.get(`https://gorgeous-strudel-9ed118.netlify.app//${route}`, {
+      const resp = await httpClient.get(`https://gorgeous-strudel-9ed118.netlify.app/${route}`, {
         params: !isEmpty(payload) ? payload : undefined,
       });
       return resp.data;

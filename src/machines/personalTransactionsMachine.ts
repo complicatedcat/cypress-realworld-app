@@ -7,7 +7,7 @@ export const personalTransactionsMachine = dataMachine("personalTransactions").w
     fetchData: async (ctx, event: any) => {
       const payload = omit("type", event);
       const resp = await httpClient.get(
-        `https://gorgeous-strudel-9ed118.netlify.app//transactions`,
+        `https://gorgeous-strudel-9ed118.netlify.app/transactions`,
         {
           params: !isEmpty(payload) ? payload : undefined,
         }
