@@ -18,7 +18,7 @@ const transactionDataMachine = dataMachine("transactionData").withConfig({
     createData: async (ctx, event: any) => {
       const payload = omit("type", event);
       const resp = await httpClient.post(
-        `https://gorgeous-strudel-9ed118.netlify.app/transactions`,
+        `https://develop--gorgeous-strudel-9ed118.netlify.app/transactions`,
         payload
       );
       authService.send("REFRESH");

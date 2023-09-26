@@ -28,7 +28,7 @@ import { getBackendPort } from "../src/utils/portUtils";
 require("dotenv").config();
 
 const corsOption = {
-  origin: `https://gorgeous-strudel-9ed118.netlify.app/`,
+  origin: `https://develop--gorgeous-strudel-9ed118.netlify.app/`,
   credentials: true,
 };
 

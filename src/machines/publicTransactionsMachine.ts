@@ -7,7 +7,7 @@ export const publicTransactionsMachine = dataMachine("publicTransactions").withC
     fetchData: async (ctx, event: any) => {
       const payload = omit("type", event);
       const resp = await httpClient.get(
-        `https://gorgeous-strudel-9ed118.netlify.app/transactions/public`,
+        `https://develop--gorgeous-strudel-9ed118.netlify.app/transactions/public`,
         {
           params: !isEmpty(payload) ? payload : undefined,
         }
